@@ -32,7 +32,11 @@ class GarageServiceTest {
 
     @Test
     void testParkShip_NoAvailableSpots() {
-        when(garage.getParkingLots()).thenReturn(new ParkedShip[45]);
+        ParkedShip[] parkedShips = new ParkedShip[1];
+
+        parkedShips[0] = new ParkedShip("AAA111");
+
+        when(garage.getParkingLots()).thenReturn(parkedShips);
 
         ResponseEntity responseEntity = garageService.park("ABC123");
 
@@ -41,7 +45,7 @@ class GarageServiceTest {
 
     @Test
     void testParkShip_SuccessfulParking() {
-        ParkedShip[] parkingLots = new ParkedShip[45];
+        ParkedShip[] parkingLots = new ParkedShip[1];
 
         when(garage.getParkingLots()).thenReturn(parkingLots);
 

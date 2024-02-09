@@ -66,6 +66,7 @@ public class GarageService {
     }
 
     public ResponseEntity leave(int parkingLotNumber) {
+
         if (parkingLotNumber < 1 || parkingLotNumber > garage.getParkingLots().length) {
             return ResponseEntity.badRequest().body("invalid parking lot number: " + parkingLotNumber);
         }
@@ -77,6 +78,7 @@ public class GarageService {
         }
 
         parkedShip.setLeavingDateTime(LocalDateTime.now());
+
         double cost = calculateParkingCost(parkingLotNumber);
         parkedShip.setFinalParkingCost(cost);
 
